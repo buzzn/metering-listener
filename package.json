@@ -1,0 +1,29 @@
+{
+  "name": "metering-listener",
+  "version": "1.0.0",
+  "description": "listen to new mqtt messages and store in mongodb",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buzzn/metering-listener.git"
+  },
+  "keywords": [
+    "metering",
+    "mqtt",
+    "mongodb"
+  ],
+  "author": "ffaerber@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/buzzn/metering-listener/issues"
+  },
+  "homepage": "https://github.com/buzzn/metering-listener#readme",
+  "dependencies": {
+    "dotenv": "4.0.0",
+    "mongodb": "^2.2.26",
+    "mqtt": "2.6.2"
+  }
+}
