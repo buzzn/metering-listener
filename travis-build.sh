@@ -22,4 +22,4 @@ if [ -d tmp ]; then
   rm -rf tmp
 fi
 
-docker build -t monitor -f "Dockerfile.$ARCH" .
+docker build -t metering-listener -f "Dockerfile.$ARCH" .
