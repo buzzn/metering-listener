@@ -1,13 +1,18 @@
 sudo: required
+
 services:
-- docker
-language: bash
+ - docker
+
+env:
+  matrix:
+    - ARCH=arm
+    - ARCH=arm64
+    - ARCH=amd64
+
 script:
-# build image
-- docker build -t buzzn/metering-listener .
-# push image
-- >
-  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-    docker push buzzn/metering-listener:latest
-  fi
+  - ./travis-build.sh
+  - >
+    if [ -n "$TRAVIS_TAG" ]; then
+      travis_retry timeout 5m docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+      ./travis-deploy.sh
+    fi
