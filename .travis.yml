@@ -10,7 +10,7 @@ env:
     - ARCH=amd64
 
 script:
-  - chmod +x ./
+  - chmod +x ./travis-build.sh
   - ./travis-build.sh
   - >
     if [ -n "$TRAVIS_TAG" ]; then
