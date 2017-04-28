@@ -12,6 +12,7 @@ env:
 script:
   - chmod +x ./travis-build.sh
   - ./travis-build.sh
+  - echo "$TRAVIS_TAG"
   - >
     if [ -n "$TRAVIS_TAG" ]; then
       docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
