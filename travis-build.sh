@@ -6,6 +6,8 @@ sudo service docker stop
 curl -fsSL https://test.docker.com/ | sudo sh
 docker version
 
+echo "ARCH=$ARCH"
+
 if [ "$ARCH" != "amd64" ]; then
   # prepare qemu
   docker run --rm --privileged multiarch/qemu-user-static:register --reset
