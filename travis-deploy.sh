@@ -6,8 +6,6 @@ image="buzzn/metering-listener"
 docker tag metering-listener "$image:linux-$ARCH-$TRAVIS_TAG"
 docker push "$image:linux-$ARCH-$TRAVIS_TAG"
 
-echo "-----------> $image:linux-$ARCH-$TRAVIS_TAG"
-
 if [ "$ARCH" == "amd64" ]; then
   set +e
   echo "Waiting for other images $image:linux-arm-$TRAVIS_TAG"
