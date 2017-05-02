@@ -1,12 +1,14 @@
-FROM node:6.10.0 as build
+FROM node:7.6.0
 
-WORKDIR /code
-COPY package.json /code
-RUN npm install --production
-COPY index.js /code
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-FROM node:6.10.0-alpine
+# Install app dependencies
+COPY package.json /usr/src/app/
+RUN npm install
 
-WORKDIR /code
-COPY --from=build /code /code
-CMD ["node", "index.js"]
+# Bundle app source
+COPY . /usr/src/app
+
+CMD [ "npm", "start" ]
