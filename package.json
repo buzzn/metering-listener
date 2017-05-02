@@ -23,7 +23,7 @@
   "homepage": "https://github.com/buzzn/metering-listener#readme",
   "dependencies": {
     "dotenv": "4.0.0",
-    "mongodb": "^2.2.26",
+    "mongodb": "2.2.26",
     "mqtt": "2.6.2"
   }
 }
