@@ -7,18 +7,20 @@ const time = require('time');
 const mqttClient = mqtt.connect(process.env.MQTT_BROKER_HOST)
 
 mqttClient.on('connect', function () {
+  console.log('connect to topic: ' + process.env.MQTT_TOPIC )
   mqttClient.subscribe(process.env.MQTT_TOPIC)
 })
 
 MongoClient.connect(process.env.MONGODB_HOST, function(err, db) {
-  console.log("Connected correctly to server");
+  console.log("Connected correctly to host: "+ process.env.MONGODB_HOST);
   mqttClient.on('message', (topic, message) => {
     try {
-
       let json = extend(JSON.parse(message.toString()),{timestamp: time.time()})
-      insertDocuments(json, db, console.log);
+      insertDocuments(json, db, (doc) => {
+        console.log(doc.ops)
+      })
     } catch (e) {
-      console.log("not JSON");
+      console.log("error: " + e);
     }
   })
 });
